@@ -20,3 +20,48 @@ To compile and build the ISO, your environment must have the following tools ins
 ```bash
 sudo apt update
 sudo apt install build-essential gcc-multilib genisoimage qemu-system-x86 git
+
+🚀 Building and Running Nimbly-OS
+🐧 Option 1: Running Natively on Linux / Windows Subsystem for Linux (WSL)
+If you are inside your project repository folder (~/nimbly-os), compile the kernel and launch it instantly via QEMU using the following setup:
+Clean and Compile the Code:
+Bash
+make clean && make
+This removes old artifacts and builds the mykernel.bin binary or output files.
+Run via QEMU Emulator:
+Bash
+qemu-system-i386 -kernel mykernel.bin
+(Alternatively, if your Makefile generates a bootable ISO image):
+Bash
+qemu-system-i386 -cdrom nimblyos.iso
+🪟 Option 2: Running Natively on Windows
+If you compiled your project inside WSL but want to run or test the final image directly within native Windows, use this workflow:
+Method A: Using QEMU for Windows (Recommended)
+Download and install QEMU for Windows from the official site.
+Add the QEMU path (e.g., C:\Program Files\qemu) to your Windows System Environment Variables.
+Open a standard Windows Command Prompt (cmd) or PowerShell, navigate to your build artifacts, and boot the OS:
+PowerShell
+qemu-system-i386.exe -kernel .\mykernel.bin
+or using the ISO file:
+PowerShell
+qemu-system-i386.exe -cdrom .\nimblyos.iso
+Method B: Booting via VirtualBox / VMware
+Copy the generated nimblyos.iso from your build directory onto your Windows filesystem.
+Open VirtualBox or VMware Player.
+Create a new VM:
+Type: Other
+Version: Other/Unknown (32-bit)
+Memory: 32 MB or 64 MB is more than enough.
+Mount nimblyos.iso into the virtual optical IDE drive.
+Click Start to watch your kernel boot!
+📂 Repository Structure
+kernel.c — Main kernel execution logic, command interpreter, string parsers, and VGA hardware address mapping.
+kernel.s / boot.s — Assembly bootstrap routine initializing GDT/stack and calling the C entry point.
+makefile — Standard compilation automation scripts targeting -m32 cross-compilation architectures.
+🎮 Built-in Commands
+Type these commands inside the shell:
+help — Prints the diagnostic help menu.
+clear — Wipes the VGA display framebuffers clean.
+guess — Launches the CoreGuess numerical guessing mini-game.
+version — Displays current environment build metrics.
+Proudly maintained by Ferdo Studios.
