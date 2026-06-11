@@ -20,6 +20,7 @@ To compile and build the ISO, your environment must have the following tools ins
 ```bash
 sudo apt update
 sudo apt install build-essential gcc-multilib genisoimage qemu-system-x86 git
+```
 
 🚀 Building and Running Nimbly-OS
 🐧 Option 1: Running Natively on Linux / Windows Subsystem for Linux (WSL)
