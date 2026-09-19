@@ -11,14 +11,3 @@ A lightweight, standalone hobby operating system built from scratch, utilizing m
 - **Hybrid Video Architecture**: Supports native VGA Text-Mode (`0xB8000`) and low-level Mode 13h (`0xA0000`) graphic rendering pipelines.
 
 ---
-
-## 🛠️ Prerequisites & Toolchain
-
-To compile and build the ISO, your environment must have the following tools installed:
-
-### On Linux (Ubuntu/Debian) or WSL:
-```bash
-sudo apt update
-sudo apt install build-essential gcc-multilib genisoimage qemu-system-x86 git
-```
-
